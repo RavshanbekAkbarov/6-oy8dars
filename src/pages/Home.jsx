@@ -1,8 +1,14 @@
+import { axiosInstance } from "../utils/axiosInstance";
+import ProductsContainer from "../components/ProductsContainer";
 
+//loader rrd
+export const loader = async () => {
+  const req = await axiosInstance.get("/products");
+  const products = req.data.products;
+  return { products };
+};
 function Home() {
-  return (
-    <div>Home</div>
-  )
+  return  <ProductsContainer />;
 }
 
-export default Home
+export default Home;

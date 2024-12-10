@@ -13,6 +13,12 @@ import {
   Register,
   SingleProduct,
 } from "./pages";
+
+//loaders
+
+import { loader as HomeLoader } from "./pages/Home";
+import { loader as SingleProductLoader } from "./pages/SingleProduct";
+
 function App() {
   const routes = createBrowserRouter([
     {
@@ -22,6 +28,7 @@ function App() {
         {
           index: true,
           element: <Home />,
+          loader: HomeLoader,
         },
         {
           path: "about",
@@ -44,8 +51,9 @@ function App() {
           element: <Register />,
         },
         {
-          path: "product/:id",
+          path: "/singleproduct/:id",
           element: <SingleProduct />,
+          loader: SingleProductLoader,  
         },
       ],
     },
