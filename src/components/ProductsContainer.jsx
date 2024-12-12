@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useLoaderData, Link } from "react-router-dom";
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from "../context/globalContext";
 import { toast } from "react-toastify";
 
 function ProductsContainer() {
