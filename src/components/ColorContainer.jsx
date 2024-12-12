@@ -1,7 +1,7 @@
 const colors = ["#ECEBDE", "#D3F1DF", "#EBEAFF", "#FEF3E2"];
 
 import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from "../context/globalContext";
 
 function ColorContainer() {
   const { dispatch } = useContext(GlobalContext);
