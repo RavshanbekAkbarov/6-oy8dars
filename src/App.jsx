@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 //layouts
 import MainLayout from "./layouts/MainLayout";
@@ -18,12 +22,18 @@ import {
 
 import { loader as HomeLoader } from "./pages/Home";
 import { loader as SingleProductLoader } from "./pages/SingleProduct";
+import { ProtectedRoutes } from "./components";
 
 function App() {
+  const user = true;
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: <MainLayout />,
+      element: (
+        <ProtectedRoutes user="user">
+          <MainLayout />
+        </ProtectedRoutes>
+      ),
       children: [
         {
           index: true,
@@ -42,20 +52,21 @@ function App() {
           path: "cart",
           element: <Cart />,
         },
-        {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "register",
-          element: <Register />,
-        },
+
         {
           path: "/singleproduct/:id",
           element: <SingleProduct />,
-          loader: SingleProductLoader,  
+          loader: SingleProductLoader,
         },
       ],
+    },
+    {
+      path: "login",
+      element: user ? <Navigate to="/" /> : <Login />,
+    },
+    {
+      path: "register",
+      element: user ? <Navigate to="/" /> : <Register />,
     },
   ]);
 

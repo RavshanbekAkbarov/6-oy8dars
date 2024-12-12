@@ -17,6 +17,6 @@
     @apply flex-grow;
   }
   .align-elements {
-    @apply mx-auto max-w-6xl px-5 w-full;
+    @apply mx-auto w-full max-w-6xl px-5;
   }
 }

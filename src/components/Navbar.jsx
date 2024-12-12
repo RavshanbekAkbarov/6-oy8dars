@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 function Navbar() {
-  const { color, selelctedProducts } = useContext(GlobalContext);
+  const { color, selectedProducts } = useContext(GlobalContext);
   return (
     <header className="mb-5 bg-base-200" style={{ backgroundColor: color }}>
       <div className="align-elements navbar">
@@ -62,7 +62,7 @@ function Navbar() {
                     />
                   </svg>
                   <span className="badge indicator-item badge-sm">
-                    {selelctedProducts.length}
+                    {selectedProducts?.length || 0}
                   </span>
                 </div>
               </div>

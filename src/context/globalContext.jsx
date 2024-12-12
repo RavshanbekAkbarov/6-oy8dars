@@ -6,21 +6,24 @@ const changeState = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "ADD_PRODUCT":
-      return { ...state, products: [...state, payload] };
+      return {
+        ...state,
+        selectedProducts: [...state.selectedProducts, payload],
+      };
 
     case "CHANGE_COLOR":
       return { ...state, color: payload };
+
+    default:
+      return state;
   }
 };
 
 export function GlobalContextProvider({ children }) {
   const [state, dispatch] = useReducer(changeState, {
     color: "",
-    selelctedProducts: [],
+    selectedProducts: [],
   });
-  // const changeColor = (color) => {
-  //   dispatch({ type: "CHANGE_COLOR", payload: color });
-  // };
 
   return (
     <GlobalContext.Provider value={{ ...state, dispatch }}>

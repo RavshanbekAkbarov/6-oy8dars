@@ -4,14 +4,19 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 function ColorContainer() {
-  const { changeColor } = useContext(GlobalContext);
+  const { dispatch } = useContext(GlobalContext);
   return (
     <div className="align-elements mb-10 flex w-full justify-end">
       <ul className="flex gap-3">
         {colors.map((color) => {
           return (
             <li
-              onClick={() => changeColor(color)}
+              onClick={() =>
+                dispatch({
+                  type: "CHANGE_COLOR",
+                  payload: color,
+                })
+              }
               key={color}
               style={{ backgroundColor: color }}
               className="h-7 w-7 cursor-pointer rounded-full border hover:border-red-400"
